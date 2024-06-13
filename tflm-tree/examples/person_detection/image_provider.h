@@ -17,6 +17,7 @@ limitations under the License.
 #define TENSORFLOW_LITE_MICRO_EXAMPLES_PERSON_DETECTION_IMAGE_PROVIDER_H_
 
 #include "tensorflow/lite/c/common.h"
+#include <opencv2/opencv.hpp>
 
 // This is an abstraction around an image source like a camera, and is
 // expected to return 8-bit sample data.  The assumption is that this will be
@@ -32,6 +33,20 @@ limitations under the License.
 // The reference implementation can have no platform-specific dependencies, so
 // it just returns a static image. For real applications, you should
 // ensure there's a specialized implementation that accesses hardware APIs.
+
+class CameraManager {
+public:
+    CameraManager(int device_id, int image_width, int image_height);
+    ~CameraManager();
+
+    TfLiteStatus GetImage(int channels, int8_t* image_data);
+
+private:
+    cv::VideoCapture cap;
+    int width;
+    int height;
+};
+
 TfLiteStatus GetImage(int image_width, int image_height, int channels,
                       int8_t* image_data);
 

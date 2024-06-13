@@ -5,6 +5,9 @@ project(person_detection C CXX)
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_CXX_STANDARD 17)
 
+set(OpenCV_DIR "C:/Program Files/OpenCV/opencv/build/x64/MinGW64/bin")
+find_package(OpenCV REQUIRED)
+
 file(GLOB person_detection_sources
   "${CMAKE_CURRENT_LIST_DIR}/*.h"
   "${CMAKE_CURRENT_LIST_DIR}/*.cc"
@@ -21,7 +24,8 @@ target_sources(person_detection
 
 target_include_directories(person_detection
   PRIVATE
-  "${CMAKE_CURRENT_LIST_DIR}/"
+  "${CMAKE_CURRENT_LIST_DIR}"
+  "${OpenCV_INCLUDE_DIRS}"
 )
 
-target_link_libraries(person_detection PRIVATE tflmicro)
+target_link_libraries(person_detection PRIVATE tflmicro ${OpenCV_LIBS})

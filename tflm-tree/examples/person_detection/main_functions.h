@@ -16,6 +16,7 @@ limitations under the License.
 #ifndef TENSORFLOW_LITE_MICRO_EXAMPLES_PERSON_DETECTION_MAIN_FUNCTIONS_H_
 #define TENSORFLOW_LITE_MICRO_EXAMPLES_PERSON_DETECTION_MAIN_FUNCTIONS_H_
 
+#include "image_provider.h"
 // Expose a C friendly interface for main functions.
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +29,7 @@ void setup();
 // Runs one iteration of data gathering and inference. This should be called
 // repeatedly from the application code. The name needs to be loop() for Arduino
 // compatibility.
-void loop();
+void loop(CameraManager camera);
 
 #ifdef __cplusplus
 }

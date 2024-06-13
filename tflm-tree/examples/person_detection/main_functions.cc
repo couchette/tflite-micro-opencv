@@ -88,10 +88,10 @@ void setup() {
 }
 
 // The name of this function is important for Arduino compatibility.
-void loop() {
+void loop(CameraManager camera) {
   // Get image from provider.
   if (kTfLiteOk !=
-      GetImage(kNumCols, kNumRows, kNumChannels, input->data.int8)) {
+      camera.GetImage(kNumChannels, input->data.int8)) {
     MicroPrintf("Image capture failed.");
   }
 

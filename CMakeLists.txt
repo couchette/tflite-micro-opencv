@@ -123,6 +123,7 @@ target_sources(tflmicro PRIVATE
     "${lib_srcs}"
 )
 
-# add_subdirectory("tflm-tree/examples/hello_world")
-# add_subdirectory("tflm-tree/examples/micro_speech")
+add_subdirectory("tflm-tree/examples/hello_world")
+add_subdirectory("tflm-tree/examples/micro_speech")
 add_subdirectory("tflm-tree/examples/person_detection")
+add_subdirectory("examples/hello_world")

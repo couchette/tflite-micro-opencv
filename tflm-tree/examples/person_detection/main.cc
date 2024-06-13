@@ -14,14 +14,17 @@ limitations under the License.
 ==============================================================================*/
 
 #include "main_functions.h"
+#include "model_settings.h"
+#include "image_provider.h"
 
 // This is the default main used on systems that have the standard C entry
 // point. Other devices (for example FreeRTOS or ESP32) that have different
 // requirements for entry code (like an app_main function) should specialize
 // this main.cc file in a target-specific subfolder.
 int main(int argc, char* argv[]) {
+  CameraManager camera(0, kNumCols, kNumRows);
   setup();
   while (true) {
-    loop();
+    loop(camera);
   }
 }
